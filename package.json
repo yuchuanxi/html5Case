@@ -1,0 +1,46 @@
+{
+  "name": "html5Case",
+  "version": "0.0.1",
+  "description": "html5 case",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gooofly/html5Case.git"
+  },
+  "keywords": [
+    "html5",
+    "learning",
+    "html5",
+    "case"
+  ],
+  "author": "gooofly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gooofly/html5Case/issues"
+  },
+  "homepage": "https://github.com/gooofly/html5Case",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^1.7.0",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-copy": "0.0.2",
+    "gulp-csscomb": "^3.0.3",
+    "gulp-cssmin": "^0.1.6",
+    "gulp-jshint": "^1.9.0",
+    "gulp-less": "^1.3.6",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-sourcemaps": "^1.2.8",
+    "gulp-uglify": "^1.0.1",
+    "gulp-watch": "^1.2.0",
+    "jshint-stylish": "^1.0.0",
+    "gulp-connect": "^2.2.0",
+    "debug": "^2.1.1",
+    "gulp-jade": "^0.11.0",
+    "gulp-prettify": "^0.3.0"
+  }
+}
