@@ -95,7 +95,7 @@ gulp.task('less', function () {
   
   var stream = gulp.src(subProjectDir +'/less/main.less')
     .pipe(less())
-    .pipe(prefix('Android 2.3', 'Android >=4', 'Chrome >=20', 'Firefox >=24', 'Explorer >=8', 'IOS > 6', 'Opera >= 12', 'Safari >= 6'))
+    .pipe(prefix( 'Android >=4', 'Chrome >=30', 'Firefox >=30', 'Explorer >=9', 'IOS > =6', 'Safari >= 6'))
     .pipe(csscomb());
 
   if (subProject) {
@@ -119,7 +119,7 @@ gulp.task('less', function () {
 gulp.task('css', ['less'], function () {
   
   var stream = gulp.src(subProjectDir +'/css/*.css')
-    .pipe(prefix('Android 2.3', 'Android >=4', 'Chrome >=20', 'Firefox >=24', 'Explorer >=8', 'IOS > 6', 'Opera >= 12', 'Safari >= 6'))
+    .pipe(prefix( 'Android >=4', 'Chrome >=30', 'Firefox >=30', 'Explorer >=9', 'IOS > =6', 'Safari >= 6'))
     .pipe(csscomb());
 
   if (subProject) {
