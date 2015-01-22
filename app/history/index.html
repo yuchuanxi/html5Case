@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>my project title</title>
+    <title> </title>
     <meta name="Author" content="gooofly">
     <meta name="Keywords" content="">
     <meta name="description" content="">
@@ -16,7 +16,53 @@
   </head>
 
   <body>
-    <p>hello world!</p>
+    <h2>History API</h2>
+    <div id="exhibit">You are at the Zoom entrance.</div>
+    <button id="btnNextExhibit">Visit the Meerkats</button>
+    <h3>浏览器兼容情况</h3>
+    <p>['Firefox', 'Chrome', 'IE 10', 'Safari 6', 'IOS Safari 5.1', 'Andoroid 4.3+']</p>
+    <h3>API 介绍</h3><pre>history.pushState( data, title, [,url] )
+data: 用以表示页面状态的字符串或对象
+title: 浏览器为页面显示的标题栏字符串 (大多数浏览器不支持)
+url: (可选)添加到历史记录栈中的新URL
+ 
+状态对象存储在本地磁盘,部分浏览器会限制data参数的大小.
+Firefox将状态对象串行化(serialized)后的大小限制在640000字符.
+如果有可能超过此限制,你应该选用`sessionStorage`或`localStorage`
+ 
+提供的url参数将会替代浏览器地址栏的URL, 但浏览器不会向此地址发送请求.
+这可以允许用户将该URL保存为书签以备后来返回.这里URL可以是相对或绝对路径,
+不过路劲必须与当前URL在同一个域名下
+ 
+pushState函数类似于在动态、基于Ajax应用中常用到的，使用#号(hash)控制页面上下文的方法：
+widow.location = '#foo';
+不过，使用pushState函数比#号方法更灵活。
+pushState能够使浏览器停留在当前页面或改变URL。#号方法只能将浏览器停留在相同的URL。
+pushState能够将上下文信息保存在历史记录状态中。这一点尤其重要
+ 
+HTML5 定义了历史记录API对应的新窗口时间popstate。浏览器窗口的活动
+历史记录的改变会触发该事件。历史记录条目的改变可以是由于用户单击了浏览器的
+后退或前进按钮，也可以是调用了history对象的back,forward,go方法。
+window.addEventListener('popstate', func, false); 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </pre>
+    <script src="./js/main.js"></script>
     <script id="__bs_script__">
       document.write("<script async src='//HOST:3000/browser-sync/browser-sync-client.1.9.0.js'><\/script>".replace(/HOST/g, location.hostname).replace(/PORT/g, location.port));
     </script>
