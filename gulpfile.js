@@ -204,7 +204,7 @@ function() {
   gulp.watch(subProjectDir +'/js/*.js', ['jshint']);
   gulp.watch(subProjectDir +'/less/*.less', ['less']);
   gulp.watch(subProjectDir +'/css/*.css', ['css']);
-  gulp.watch([subProjectDir +'jade/*.jade'], ['jade']);
+  gulp.watch([subProjectDir +'/jade/*.jade'], ['jade']);
   gulp.watch([subProjectDir +'/*.html'], reload);
 });
 // 编译项目
