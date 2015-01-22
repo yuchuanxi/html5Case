@@ -11,6 +11,7 @@
 var
   // core modules
   path = require('path'),
+  fs = require('fs'),
 
   gulp = require('gulp'),
   debug = require('debug')('gf:gulpfile'),
@@ -206,8 +207,8 @@ function() {
   gulp.watch([subProjectDir +'jade/*.jade'], ['jade']);
   gulp.watch([subProjectDir +'/*.html'], reload);
 });
-
 // 编译项目
+
 gulp.task('build', ['copyHtml', 'cssmin', 'jsmin'], function () {
 
   debug('building ok!');
@@ -215,7 +216,32 @@ gulp.task('build', ['copyHtml', 'cssmin', 'jsmin'], function () {
 
 // 创建新项目
 gulp.task('new', function () {
+  if ( subProject ) {
+    var 
+      filePath = path.resolve(__dirname, 'app'),
+      newFolderPath = path.resolve(filePath, subProject);
 
+    fs.readdir(filePath, function ( err, folders ) {
+
+      if ( !err ) {
+        // 如果传入工程名已经存在了
+        if ( folders.indexOf(subProject) !== -1 )
+          throw new Error('Project has existed!');
+
+        fs.mkdir(newFolderPath, function ( err ) {
+          
+          var stream = gulp.src('template/**')
+            .pipe(copy(newFolderPath, {prefix: 1}));
+
+          debug('Create new project success!');
+        });
+      }
+    });
+  }
+  else { // 如果没有传入工程名
+
+    throw new Error('Must provide a name of project!');
+  }
 });
 
 

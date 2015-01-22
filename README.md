@@ -29,11 +29,6 @@ eg: gulp default --history
 2. 项目编译
 
 ```
-gulp --projectName
-eg: gulp --history
-```
-or
-```
 gulp build --projectName
 eg: gulp build --history
 ```
@@ -43,6 +38,14 @@ eg: gulp build --history
 
 3. 创建项目
 
-**未完成...**
+**说明:**
 
+```
+gulp new --projectName
+eg: gulp new --history
+```
+
+必须提供 `projectName`, 并且 `projectName` 不能和当前已存在工程同名.
+
+*note:* 现在的 `new` 操作只是简单的copy了一份初始工程.
 
