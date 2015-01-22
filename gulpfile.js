@@ -248,7 +248,7 @@ gulp.task('new', function () {
 // 启动node web服务
 gulp.task('connect', function() {
   connect.server({
-    root: 'app',
+    root: './',
     port: 8888
   });
 });
