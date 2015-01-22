@@ -29,7 +29,5 @@ nbproject
 *.sublime-workspace
 .idea
 
-app/history3
-
 node_modules
 bower_components
