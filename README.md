@@ -1,6 +1,9 @@
 # html5Case
 learning html5, take notes, make demonstration
 
+提供了一个环境, 用于开发, 打包, 新建项目.
+在开发中主要通过自动监听静态文件的变动, 自动更新浏览器来减少重复的工作量.
+
 
 
 
