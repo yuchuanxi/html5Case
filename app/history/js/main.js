@@ -1,8 +1,8 @@
 /**
  * 
- * @authors gooofly (wangfei@ctrip.com)
- * @date    2015-01-21 19:32:30
+ * @authors Gooofly (wangfei@ctrip.com)
+ * @date    2015-01-22 10:17:17
  * @version $Id$
  */
 
-var a = 1;
+var name = 'test';
