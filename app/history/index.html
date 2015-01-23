@@ -17,8 +17,17 @@
 
   <body>
     <h2>History API</h2>
-    <div id="exhibit">You are at the Zoom entrance.</div>
-    <button id="btnNextExhibit">Visit the Meerkats</button>
+    <!-- image view and title - set to first image-->
+    <div id="imgView" class="imgView"><img id="imgSlide" src="http://gooofly.qiniudn.com/FEI_2298.JPG">
+    </div>
+    <div id="imageInfo">Image FEI_2298.JPG</div>
+    <!-- thumbnail image row-->
+    <div id="imgRow" class="imgRow"></div>
+    <!-- history state dispaly area - set to first image (page when loaded)-->
+    <div id="stateInfo">Image FEI_2298.JPG</div>
+    <hr>
+    <button id="btnNextState">Replace State</button>
+    <div id="stateInfo2"> </div>
     <h3>浏览器兼容情况</h3>
     <p>['Firefox', 'Chrome', 'IE 10', 'Safari 6', 'IOS Safari 5.1', 'Andoroid 4.3+']</p>
     <h3>API 介绍</h3><pre>history.pushState( data, title, [,url] )
@@ -45,12 +54,12 @@ HTML5 定义了历史记录API对应的新窗口时间popstate。浏览器窗口
 后退或前进按钮，也可以是调用了history对象的back,forward,go方法。
 window.addEventListener('popstate', func, false); 
  
- 
- 
- 
- 
- 
- 
+ 历史记录API的replaceState方法可用新的条目替代浏览器历史记录的当前条目。
+ 它的参数与pushState相同： data、title和一个可选的URL。
+ replaceState方法在上下文改变或设置页面初始状态、需要更新浏览器历史记录状态时非常有用。
+ 当浏览器重新载入某个页面时，标题和URL保存在历史记录条目中。不过，并没有保存任何上文数据信息。
+ 为了将数据与标题、URL同时保存，你可以在页面载入时使用相同的标题、相同的URL以及额外需要
+ 保存于历史记录条目的状态数据来调用replaceState。
  
  
  
