@@ -30,6 +30,21 @@
     <div id="stateInfo2"></div>
     <hr>
     <div id="stateInfo3"></div>
+    <hr>
+    <!-- slide image and title-->
+    <div id="slide" style="height:100px"><img id="imgSlide4" src="images/slide1.jpg">
+    </div>
+    <div id="slideInfo">Slide 1</div>
+    <!-- slide options-->
+    <input id="chkBorder" type="checkbox" onchange="setImgBorder();">Border
+    <br>Note:
+    <input id="txtNote" type="text" value="">
+    <br>
+    <!-- slide navigation buttons-->
+    <input type="button" onclick="prevSlide();" value="Previous Slide">
+    <input type="button" onclick="nextSlide();" value="Next Slide">
+    <!-- history state display area-->
+    <div id="stateInfo4"></div>
     <h3>浏览器兼容情况</h3>
     <p>['Firefox', 'Chrome', 'IE 10', 'Safari 6', 'IOS Safari 5.1', 'Andoroid 4.3+']</p>
     <h3>API 介绍</h3><pre>history.pushState( data, title, [,url] )

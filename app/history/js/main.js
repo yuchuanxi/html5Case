@@ -163,3 +163,145 @@ function logAction3 ( strAction ) {
 window.addEventListener( 'popstate', popPage3, false);
 window.addEventListener( 'load', loadPage3, false);
 
+
+// set first and last slide numbers
+var
+  minSlide = 1,
+  maxSlide = 5;
+
+// initialize fields used
+var
+  currentSlide = 1,
+  currentTitle = 'My Slide 1',
+  borderOn = 0, // 0 is off, 1 is on
+  slideNote = '';
+
+// initialize our first slide state by replacing current state
+var
+  stateObj = {
+    slide: currentSlide,
+    border: borderOn,
+    note: slideNote
+  };
+
+history.replaceState( stateObj, currentTitle, '?slide='+ currentSlide );
+
+// history pop state handler
+window.addEventListener( 'popstate', function ( event ) {
+
+  // show the location URL and string display of the event.state
+  document.getElementById('stateInfo4').innerHTML = 'locaiton: '+
+      document.location + '<br>state: '+ JSON.stringify( event.state );
+
+  // retrieve state object date
+  currentSlide = event.state.slide;
+  borderOn = event.state.border;
+  slideNote = event.state.note;
+
+  // show the current slide
+  showSlide();
+}, false );
+
+// navigate to the next slide
+function nextSlide () {
+
+  // check if the History API is available
+  if ( Modernizr.history ) {
+
+    // validate that we are not at the end of the presentation
+    if ( currentSlide < maxSlide ) {
+
+      // retrieve any notes that have been entered
+      slideNote = document.getElementById('txtNote').value;
+
+      // set the state object with the current options
+      var currentStateObj = {
+        slide: currentSlide,
+        border: borderOn,
+        note: slideNote
+      };
+
+      // replace the current slide properties in the current history entry
+      history.replaceState( currentStateObj, 'Slide'+ currentSlide +' '+ slideNote, 
+          '?slide='+ currentSlide );
+
+      // increment the current slide index
+      currentSlide++;
+      // set global variables to next slide and reset to defaults
+      borderOn = 0;
+      slideNote = '';
+      document.getElementById('stateInfo4').innerHTML = '';
+
+      // set next slide in history entries with state object and defaults
+      var nextStateObj = {
+        slide: currentSlide,
+        border: borderOn,
+        note: slideNote
+      };
+      history.pushState( nextStateObj, 'slide'+ currentSlide, '?slide='+ currentSlide );
+
+      // show the now current slide
+      showSlide();
+    }
+  }
+}
+
+// navigate to previous slide
+function prevSlide () {
+
+  // validate that we are not at the beginning already
+  if ( currentSlide > minSlide ) {
+
+    // move back one step in history
+    history.back();
+  }
+}
+
+// show the current slide, title, and options
+function showSlide () {
+
+  // set the current slide and title
+  document.getElementById('imgSlide4').src = 'images/slide'+ currentSlide + '.jpg';
+  document.getElementById('slideInfo').innerHTML = 'Slide '+ currentSlide;
+
+  // set the current page title
+  document.title = 'Slide '+ currentSlide;
+
+  // set the current slide options
+  if ( borderOn === 1 ) {
+
+    document.getElementById('imgSlide4').style.border = '5px solid #000';
+    document.getElementById('chkBorder').checked = 1;
+  }
+  else {
+
+    document.getElementById('imgSlide4').style.border = '';
+    document.getElementById('chkBorder').checked = 0;
+  }
+  document.getElementById('txtNote').value = slideNote;
+}
+
+// handle the change of the image border option
+function setImgBorder () {
+
+  // set border based on checkbox and global property
+  if ( document.getElementById('chkBorder').checked === 1 ) {
+
+    document.getElementById('imgSlide4').style.border = '5px solid #000';
+    borderOn = 1;
+  }
+  else {
+
+    document.getElementById('imgSlide4').style.border = '';
+    borderOn = 0;
+  }
+}
+
+
+
+
+
+
+
+
+

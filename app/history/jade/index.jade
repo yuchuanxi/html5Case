@@ -26,6 +26,28 @@ block content
 
   #stateInfo3
 
+  hr
+
+  // slide image and title
+  #slide(style='height:100px')
+    img#imgSlide4(src='images/slide1.jpg')
+  #slideInfo Slide 1
+
+  // slide options
+  input#chkBorder(type='checkbox' onchange='setImgBorder();')
+  | Border
+  br
+  | Note:
+  input#txtNote(type='text' value='')
+  br
+
+  // slide navigation buttons
+  input(type='button' onclick='prevSlide();' value='Previous Slide')
+  input(type='button' onclick='nextSlide();' value='Next Slide')
+
+  // history state display area
+  #stateInfo4
+
 
 
 
