@@ -126,3 +126,40 @@ function nextState () {
 // Add the listener to initialize the page
 window.addEventListener('load', init, false);
 
+
+// popstate event handler functions
+function popPage3 ( event ) {
+  var 
+    strState = 'PIP - location: '+ document.location + ' , state: '+
+        JSON.stringify( event. state );
+
+  document.getElementById('stateInfo3').innerHTML += strState + '<br>';
+}
+
+function loadPage3 () {
+  logAction3( 'pushing page 1' );
+  history.pushState({page: 1}, 'page 1', '?page=1');
+
+  logAction3( 'pushing page 2' );
+  history.pushState({page: 2}, 'page 2', '?page=2');
+
+  logAction3( 'pushing page 3' );
+  history.replaceState({page: 3}, 'page 3', '?page=3');
+
+  logAction3( 'taking one step back' );
+  history.back();
+
+  logAction3( 'taking one step back again' );
+  history.back();
+
+  logAction3( 'taking two steps forward' );
+  history.go(2);
+}
+
+function logAction3 ( strAction ) {
+  document.getElementById( 'stateInfo3' ).innerHTML += strAction + '<br>';
+}
+
+window.addEventListener( 'popstate', popPage3, false);
+window.addEventListener( 'load', loadPage3, false);
+
