@@ -199,7 +199,7 @@ gulp.task('jsmin', ['jshint'], function() {
 
 
 // 启动web server, 用于开发
-gulp.task('default', ['connect', 'browser-sync', 'jade', 'css', 'jshint'], 
+gulp.task('default', ['browser-sync'], 
 function() {
   gulp.watch(subProjectDir +'/js/*.js', ['jshint']);
   gulp.watch(subProjectDir +'/less/*.less', ['less']);
@@ -248,12 +248,12 @@ gulp.task('new', function () {
 // 启动node web服务
 gulp.task('connect', function() {
   connect.server({
-    root: './',
+    // root: './',
     port: 8888
   });
 });
 // 同步浏览器
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', ['connect', 'jade', 'css', 'jshint'], function() {
   browserSync({
     proxy: {
       host: 'http://localhost',
