@@ -29,9 +29,9 @@ block content
   hr
 
   // slide image and title
-  #slide(style='height:100px')
-    img#imgSlide4(src='images/slide1.jpg')
-  #slideInfo Slide 1
+  #slide(style='height:300px')
+    img#imgSlide4(src='http://gooofly.qiniudn.com/FEI_2298.JPG' style='height: 100%')
+  #slideInfo Slide FEI_2298
 
   // slide options
   input#chkBorder(type='checkbox' onchange='setImgBorder();')
@@ -91,13 +91,13 @@ block content
     |  保存于历史记录条目的状态数据来调用replaceState。
     |  
     |  
+    |  HTML规范为浏览器指定了一系列的安全措施以防止滥用历史记录API（安全性）
+    |  - 脚本调用pushState和replaceState时，使用的URL所处的域名必须与当前域名相同。
+    |  - popstate事件只能引用存储于相同域名下历史记录中的状态对象以保护隐私。
+    |  - pushState方法能够添加的浏览器历史记录栈条目是有限的。这是为了防止“泛洪”（flooding）用户浏览器。
+    |  通过以上这些策略，能够最小化对历史记录API的恶意使用。
+    |  **notes:**浏览器可能会施加限制并且清理历史记录栈以防止潜在的“泛洪”攻击。
+    |  每种浏览器的限制条目数各不相同，不过清理的顺序都是按照先进先出（FIFO）方式进行的。
     |  
-    |  
-    |  
-    |  
-    |  
-    |  
-    |  
-    |  
-    |  
+    |  Polyfill: https://github.com/browserstate/history.js
 

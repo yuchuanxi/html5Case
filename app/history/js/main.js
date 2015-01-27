@@ -166,12 +166,12 @@ window.addEventListener( 'load', loadPage3, false);
 
 // set first and last slide numbers
 var
-  minSlide = 1,
-  maxSlide = 5;
+  minSlide = 0,
+  maxSlide = 4;
 
 // initialize fields used
 var
-  currentSlide = 1,
+  currentSlide = 0,
   currentTitle = 'My Slide 1',
   borderOn = 0, // 0 is off, 1 is on
   slideNote = '';
@@ -213,6 +213,7 @@ function nextSlide () {
 
       // retrieve any notes that have been entered
       slideNote = document.getElementById('txtNote').value;
+      borderOn = document.getElementById('chkBorder').checked;
 
       // set the state object with the current options
       var currentStateObj = {
@@ -220,10 +221,9 @@ function nextSlide () {
         border: borderOn,
         note: slideNote
       };
-
       // replace the current slide properties in the current history entry
-      history.replaceState( currentStateObj, 'Slide'+ currentSlide +' '+ slideNote, 
-          '?slide='+ currentSlide );
+      history.replaceState( currentStateObj, 'Slide FEI_'+ imgArr[ currentSlide ] +' '+ slideNote, 
+          '?img=FEI_'+ imgArr[ currentSlide ] );
 
       // increment the current slide index
       currentSlide++;
@@ -238,7 +238,7 @@ function nextSlide () {
         border: borderOn,
         note: slideNote
       };
-      history.pushState( nextStateObj, 'slide'+ currentSlide, '?slide='+ currentSlide );
+      history.pushState( nextStateObj, 'slide FEI_'+ imgArr[ currentSlide ], '?img=FEI_'+ imgArr[ currentSlide ] );
 
       // show the now current slide
       showSlide();
@@ -261,23 +261,15 @@ function prevSlide () {
 function showSlide () {
 
   // set the current slide and title
-  document.getElementById('imgSlide4').src = 'images/slide'+ currentSlide + '.jpg';
-  document.getElementById('slideInfo').innerHTML = 'Slide '+ currentSlide;
+  document.getElementById('imgSlide4').src = 'http://gooofly.qiniudn.com/FEI_'+ imgArr[ currentSlide ] + '.JPG';
+  document.getElementById('slideInfo').innerHTML = 'Slide FEI_'+ imgArr[ currentSlide ];
 
   // set the current page title
-  document.title = 'Slide '+ currentSlide;
+  document.title = 'Slide FEI_'+ imgArr[ currentSlide ];
 
   // set the current slide options
-  if ( borderOn === 1 ) {
-
-    document.getElementById('imgSlide4').style.border = '5px solid #000';
-    document.getElementById('chkBorder').checked = 1;
-  }
-  else {
-
-    document.getElementById('imgSlide4').style.border = '';
-    document.getElementById('chkBorder').checked = 0;
-  }
+  document.getElementById('imgSlide4').style.border = borderOn ? '5px solid #f60' : '';
+  document.getElementById('chkBorder').checked = borderOn;
   document.getElementById('txtNote').value = slideNote;
 }
 
@@ -285,16 +277,9 @@ function showSlide () {
 function setImgBorder () {
 
   // set border based on checkbox and global property
-  if ( document.getElementById('chkBorder').checked === 1 ) {
-
-    document.getElementById('imgSlide4').style.border = '5px solid #000';
-    borderOn = 1;
-  }
-  else {
-
-    document.getElementById('imgSlide4').style.border = '';
-    borderOn = 0;
-  }
+  borderOn = document.getElementById('chkBorder').checked;
+  document.getElementById('imgSlide4').style.border =
+      borderOn ? '5px solid #f60' : '';
 }
 
 
