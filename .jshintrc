@@ -1,0 +1,28 @@
+{
+  "camelcase": true,
+  "es5"      : true,
+  "curly":true,
+  "eqeqeq"   : true,
+  "forin":true,
+  "freeze"   : true,
+  "immed":true,
+  "indent"   : 2,
+  "latedef"  : true,
+  "maxlen":90,
+  "newcap"   : true,
+  "noarg":true, 
+  "nonbsp"   : true,
+  "noempty": true,
+  "quotmark" : "single",
+  "undef"    : true,
+  "unused"   : true,
+  
+  "eqnull"   : true,
+  "esnext":true, 
+  "expr"     : true,
+  "strict"   : true,
+  
+  "node"     : true,
+  "browser"  : true,
+  "jquery"   : true
+}
