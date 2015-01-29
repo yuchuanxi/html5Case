@@ -1,5 +1,4 @@
 {
-  "camelcase": true,
   "es5"      : true,
   "curly":true,
   "eqeqeq"   : true,

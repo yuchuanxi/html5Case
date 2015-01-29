@@ -34,7 +34,7 @@ block content
   #slideInfo Slide FEI_2298
 
   // slide options
-  input#chkBorder(type='checkbox' onchange='setImgBorder();')
+  input#chkBorder(type='checkbox')
   | Border
   br
   | Note:
@@ -42,8 +42,8 @@ block content
   br
 
   // slide navigation buttons
-  input(type='button' onclick='prevSlide();' value='Previous Slide')
-  input(type='button' onclick='nextSlide();' value='Next Slide')
+  input#prevSlide(type='button' value='Previous Slide')
+  input#nextSlide(type='button' value='Next Slide')
 
   // history state display area
   #stateInfo4

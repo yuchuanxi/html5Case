@@ -5,11 +5,19 @@
  * @version $Id$
  */
 // 为jshint定义全局变量
-/* jshint es5: true */
 /* global Modernizr */
 
-(function () {
-'use strict';
+( function () {
+  'use strict';
+
+  function good () {
+    var
+      a = 1,
+      b = 1;
+
+    console.log( a, b );
+  }
+  good();
 
   // function init () {
   //   // attach the click button handler
@@ -46,15 +54,16 @@
     currentImg = event.state;
 
     // set the image and title
-    var imgTitle = 'Image '+ currentImg;
-    document.getElementById('imgSlide').src = 'http://gooofly.qiniudn.com/'+ currentImg + '.JPG';
-    document.getElementById('imageInfo').innerHTML = imgTitle;
+    var imgTitle = 'Image ' + currentImg;
+    document.getElementById( 'imgSlide' ).src = 'http://gooofly.qiniudn.com/' +
+        currentImg + '.JPG';
+    document.getElementById( 'imageInfo' ).innerHTML = imgTitle;
     document.title = imgTitle;
 
     // show we poped a history event and the poped state
-    var stateInfo = document.getElementById('stateInfo');
-    stateInfo.innerHTML = 'History poped : '+ imgTitle + ' : state: '+
-        JSON.stringify(event.state) + '<br>'+ stateInfo.innerHTML;
+    var stateInfo = document.getElementById( 'stateInfo' );
+    stateInfo.innerHTML = 'History poped : ' + imgTitle + ' : state: ' +
+        JSON.stringify( event.state ) + '<br>' + stateInfo.innerHTML;
   }
 
   // navigate to the next slide
@@ -64,33 +73,30 @@
     if ( Modernizr.history ) {
 
       // verify the image selected is not the current one
-      if ( currentImg !== (imgName = 'FEI_'+ imgName) ) {
+      if ( currentImg !== ( imgName = 'FEI_' + imgName ) ) {
 
         // set the image title
-        var imgTitle = 'Image '+ imgName;
+        var imgTitle = 'Image ' + imgName;
 
         // set next slide in history entries with state object and defaults
-        history.pushState( imgName, imgTitle, '?img='+ imgName );
-        document.getElementById('imgSlide').src = 'http://gooofly.qiniudn.com/'+ imgName + '.JPG';
-        document.getElementById('imageInfo').innerHTML = imgTitle;
+        history.pushState( imgName, imgTitle, '?img=' + imgName );
+        document.getElementById( 'imgSlide' ).src = 'http://gooofly.qiniudn.com/' +
+            imgName + '.JPG';
+        document.getElementById( 'imageInfo' ).innerHTML = imgTitle;
 
         // set the current page title
-        document.title = 'Image '+ imgName;
-        var stateInfo = document.getElementById('stateInfo');
-        stateInfo.innerHTML = imgTitle +'.JPG<br>'+ stateInfo.innerHTML;
+        document.title = 'Image ' + imgName;
+        var stateInfo = document.getElementById( 'stateInfo' );
+        stateInfo.innerHTML = imgTitle + '.JPG<br>' + stateInfo.innerHTML;
 
         // set the current image to the image selected
         currentImg = imgName;
       }
     }
-    else {
-      // History API is not available
-
-    }
   }
 
   // set up the popstate page handler
-  window.addEventListener('popstate', popPage, false);
+  window.addEventListener( 'popstate', popPage, false );
 
 
 
@@ -98,13 +104,16 @@
   // create row of img links
   var
     newImg,
-    imgArr = [2298, 2260, 2252, 2246, 2230],
-    // imgArr = [2298, 2294, 2291, 2287, 2284, 2278, 2268, 2264, 2264, 2260, 2252, 2246, 2230],
-    imgRow = document.getElementById('imgRow');
+    imgArr = [ 2298, 2260, 2252, 2246, 2230 ],
+    // imgArr = [2298, 2294, 2291, 2287, 2284, 2278, 2268, 2264, 
+    // 2264, 2260, 2252, 2246, 2230],
+    imgRow = document.getElementById( 'imgRow' );
 
-  for ( var i=1; i<5; i++ ) {
-    // document.getElementById('imgRow').add
-    newImg = '<a onclick="showImage('+ imgArr[i] +');"><img class="thumbnail" src="http://gooofly.qiniudn.com/FEI_'+ imgArr[i] +'.JPG"></a>';
+  for ( var i = 1; i < 5; i++ ) {
+    // document.getElementById( 'imgRow' ).add
+    newImg = '<a onclick="showImage(' + imgArr[ i ] + ');">' + 
+        '<img class="thumbnail" src="http://gooofly.qiniudn.com/FEI_' +
+        imgArr[ i ] + '.JPG"></a>';
     imgRow.innerHTML += newImg;
   }
 
@@ -115,46 +124,52 @@
   function init () {
 
     // attach the click button handler
-    var btnNextState = document.getElementById('btnNextState');
-    btnNextState.addEventListener('click', nextState, false);
+    var btnNextState = document.getElementById( 'btnNextState' );
+    btnNextState.addEventListener( 'click', nextState, false );
   } 
 
   // our replaceState wrapper function
   function nextState () {
 
     // replace the current page with the next on 
-    history.replaceState({page: idxCounter}, 'page '+ idxCounter, '?page='+ idxCounter);
+    history.replaceState({ page: idxCounter }, 'page ' + idxCounter, '?page=' +
+        idxCounter );
 
     // update our page state div
-    var strStateInfo = document.getElementById('stateInfo2').innerHTML;
-    document.getElementById('stateInfo2').innerHTML = strStateInfo + '<br>Replaced state '+ idxCounter;
+    var strStateInfo = document.getElementById( 'stateInfo2' ).innerHTML;
+    document.getElementById( 'stateInfo2' ).innerHTML = strStateInfo +
+        '<br>Replaced state ' + idxCounter;
 
     // increment our counter
     idxCounter++;
   }
 
   // Add the listener to initialize the page
-  window.addEventListener('load', init, false);
+  window.addEventListener( 'load', init, false );
 
 
   // popstate event handler functions
   function popPage3 ( event ) {
     var 
-      strState = 'PIP - location: '+ document.location + ' , state: '+
+      strState = 'PIP - location: ' + document.location + ' , state: ' +
           JSON.stringify( event. state );
 
-    document.getElementById('stateInfo3').innerHTML += strState + '<br>';
+    document.getElementById( 'stateInfo3' ).innerHTML += strState + '<br>';
   }
 
   function loadPage3 () {
     logAction3( 'pushing page 1' );
-    history.pushState({page: 1}, 'page 1', '?page=1');
+    history.pushState({
+     page : 1
+   }, 'page 1', '?page=1' );
 
     logAction3( 'pushing page 2' );
-    history.pushState({page: 2}, 'page 2', '?page=2');
+    history.pushState({
+      page : 2
+    }, 'page 2', '?page=2' );
 
     logAction3( 'pushing page 3' );
-    history.replaceState({page: 3}, 'page 3', '?page=3');
+    history.replaceState({ page: 3 }, 'page 3', '?page=3' );
 
     logAction3( 'taking one step back' );
     history.back();
@@ -163,45 +178,43 @@
     history.back();
 
     logAction3( 'taking two steps forward' );
-    history.go(2);
+    history.go( 2 );
   }
 
   function logAction3 ( strAction ) {
-    document.getElementById( 'stateInfo3' ).innerHTML += strAction + '<br>';
+    document.getElementById(  'stateInfo3'  ).innerHTML += strAction + '<br>';
   }
 
-  window.addEventListener( 'popstate', popPage3, false);
-  window.addEventListener( 'load', loadPage3, false);
+  window.addEventListener( 'popstate', popPage3, false );
+  window.addEventListener( 'load', loadPage3, false );
 
 
   // set first and last slide numbers
   var
     minSlide = 0,
-    maxSlide = 4;
+    maxSlide = 4,
 
-  // initialize fields used
-  var
+    // initialize fields used
     currentSlide = 0,
     currentTitle = 'My Slide 1',
     borderOn = 0, // 0 is off, 1 is on
-    slideNote = '';
+    slideNote = '',
 
-  // initialize our first slide state by replacing current state
-  var
+    // initialize our first slide state by replacing current state
     stateObj = {
-      slide: currentSlide,
-      border: borderOn,
-      note: slideNote
+      slide  : currentSlide,
+      border : borderOn,
+      note   : slideNote
     };
 
-  history.replaceState( stateObj, currentTitle, '?slide='+ currentSlide );
+  history.replaceState( stateObj, currentTitle, '?slide=' + currentSlide );
 
   // history pop state handler
   window.addEventListener( 'popstate', function ( event ) {
 
     // show the location URL and string display of the event.state
-    document.getElementById('stateInfo4').innerHTML = 'locaiton: '+
-        document.location + '<br>state: '+ JSON.stringify( event.state );
+    document.getElementById( 'stateInfo4' ).innerHTML = 'locaiton: ' +
+        document.location + '<br>state: ' + JSON.stringify( event.state );
 
     // retrieve state object date
     currentSlide = event.state.slide;
@@ -222,8 +235,8 @@
       if ( currentSlide < maxSlide ) {
 
         // retrieve any notes that have been entered
-        slideNote = document.getElementById('txtNote').value;
-        borderOn = document.getElementById('chkBorder').checked;
+        slideNote = document.getElementById( 'txtNote' ).value;
+        borderOn = document.getElementById( 'chkBorder' ).checked;
 
         // set the state object with the current options
         var currentStateObj = {
@@ -232,15 +245,15 @@
           note: slideNote
         };
         // replace the current slide properties in the current history entry
-        history.replaceState( currentStateObj, 'Slide FEI_'+ imgArr[ currentSlide ] +' '+ slideNote, 
-            '?img=FEI_'+ imgArr[ currentSlide ] );
+        history.replaceState( currentStateObj, 'Slide FEI_' + imgArr[ currentSlide ] +
+            ' ' + slideNote, '?img=FEI_' + imgArr[ currentSlide ] );
 
         // increment the current slide index
         currentSlide++;
         // set global variables to next slide and reset to defaults
         borderOn = 0;
         slideNote = '';
-        document.getElementById('stateInfo4').innerHTML = '';
+        document.getElementById( 'stateInfo4' ).innerHTML = '';
 
         // set next slide in history entries with state object and defaults
         var nextStateObj = {
@@ -248,7 +261,8 @@
           border: borderOn,
           note: slideNote
         };
-        history.pushState( nextStateObj, 'slide FEI_'+ imgArr[ currentSlide ], '?img=FEI_'+ imgArr[ currentSlide ] );
+        history.pushState( nextStateObj, 'slide FEI_' + imgArr[ currentSlide ],
+            '?img=FEI_' + imgArr[ currentSlide ] );
 
         // show the now current slide
         showSlide();
@@ -271,27 +285,35 @@
   function showSlide () {
 
     // set the current slide and title
-    document.getElementById('imgSlide4').src = 'http://gooofly.qiniudn.com/FEI_'+ imgArr[ currentSlide ] + '.JPG';
-    document.getElementById('slideInfo').innerHTML = 'Slide FEI_'+ imgArr[ currentSlide ];
+    document.getElementById( 'imgSlide4' ).src = 'http://gooofly.qiniudn.com/FEI_' +
+        imgArr[ currentSlide ] + '.JPG';
+    document.getElementById( 'slideInfo' ).innerHTML = 'Slide FEI_' +
+        imgArr[ currentSlide ];
 
     // set the current page title
-    document.title = 'Slide FEI_'+ imgArr[ currentSlide ];
+    document.title = 'Slide FEI_' + imgArr[ currentSlide ];
 
     // set the current slide options
-    document.getElementById('imgSlide4').style.border = borderOn ? '5px solid #f60' : '';
-    document.getElementById('chkBorder').checked = borderOn;
-    document.getElementById('txtNote').value = slideNote;
+    document.getElementById( 'imgSlide4' ).style.border = borderOn ?
+        '5px solid #f60' : '';
+    document.getElementById( 'chkBorder' ).checked = borderOn;
+    document.getElementById( 'txtNote' ).value = slideNote;
   }
 
   // handle the change of the image border option
   function setImgBorder () {
 
     // set border based on checkbox and global property
-    borderOn = document.getElementById('chkBorder').checked;
-    document.getElementById('imgSlide4').style.border =
+    borderOn = document.getElementById( 'chkBorder' ).checked;
+    document.getElementById( 'imgSlide4' ).style.border =
         borderOn ? '5px solid #f60' : '';
   }
 
-
+  document.getElementById( 'chkBorder' )
+      .addEventListener( 'change', setImgBorder, false );
+  document.getElementById( 'prevSlide' )
+      .addEventListener( 'click', prevSlide, false );
+  document.getElementById( 'nextSlide' )
+      .addEventListener( 'click', nextSlide, false );
 
 }());
