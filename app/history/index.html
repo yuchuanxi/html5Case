@@ -1,55 +1,53 @@
 <!DOCTYPE html>
 <html class="no-js">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> </title>
-  <meta name="Author" content="gooofly">
-  <meta name="Keywords" content="">
-  <meta name="description" content="">
-  <meta name="Viewport" content="width=device-width, initial-scale=1">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <link rel="stylesheet" href="/bower_components/normolize-css/normalize.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <script src="/bower_components/modernizr/modernizr.js"></script>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> </title>
+    <meta name="Author" content="gooofly">
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+    <meta name="Viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="/bower_components/normolize-css/normalize.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+  </head>
 
-<body>
-  <h2>History API</h2>
-  <!-- image view and title - set to first image-->
-  <div id="imgView" class="imgView">
-    <img id="imgSlide" src="http://gooofly.qiniudn.com/FEI_2298.JPG">
-  </div>
-  <div id="imageInfo">Image FEI_2298.JPG</div>
-  <!-- thumbnail image row-->
-  <div id="imgRow" class="imgRow"></div>
-  <!-- history state dispaly area - set to first image (page when loaded)-->
-  <div id="stateInfo">Image FEI_2298.JPG</div>
-  <hr>
-  <button id="btnNextState">Replace State</button>
-  <div id="stateInfo2"></div>
-  <hr>
-  <div id="stateInfo3"></div>
-  <hr>
-  <!-- slide image and title-->
-  <div id="slide" style="height:300px">
-    <img id="imgSlide4" src="http://gooofly.qiniudn.com/FEI_2298.JPG" style="height: 100%">
-  </div>
-  <div id="slideInfo">Slide FEI_2298</div>
-  <!-- slide options-->
-  <input id="chkBorder" type="checkbox">Border
-  <br>Note:
-  <input id="txtNote" type="text" value="">
-  <br>
-  <!-- slide navigation buttons-->
-  <input id="prevSlide" type="button" value="Previous Slide">
-  <input id="nextSlide" type="button" value="Next Slide">
-  <!-- history state display area-->
-  <div id="stateInfo4"></div>
-  <h3>浏览器兼容情况</h3>
-  <p>['Firefox', 'Chrome', 'IE 10', 'Safari 6', 'IOS Safari 5.1', 'Andoroid 4.3+']</p>
-  <h3>API 介绍</h3><pre>history.pushState( data, title, [,url] )
+  <body>
+    <h2>History API</h2>
+    <!-- image view and title - set to first image-->
+    <div id="imgView" class="imgView"><img id="imgSlide" src="http://gooofly.qiniudn.com/FEI_2298.JPG">
+    </div>
+    <div id="imageInfo">Image FEI_2298.JPG</div>
+    <!-- thumbnail image row-->
+    <div id="imgRow" class="imgRow"></div>
+    <!-- history state dispaly area - set to first image (page when loaded)-->
+    <div id="stateInfo">Image FEI_2298.JPG</div>
+    <hr>
+    <button id="btnNextState">Replace State</button>
+    <div id="stateInfo2"></div>
+    <hr>
+    <div id="stateInfo3"></div>
+    <hr>
+    <!-- slide image and title-->
+    <div id="slide" style="height:300px"><img id="imgSlide4" src="http://gooofly.qiniudn.com/FEI_2298.JPG" style="height: 100%">
+    </div>
+    <div id="slideInfo">Slide FEI_2298</div>
+    <!-- slide options-->
+    <input id="chkBorder" type="checkbox">Border
+    <br>Note:
+    <input id="txtNote" type="text" value="">
+    <br>
+    <!-- slide navigation buttons-->
+    <input id="prevSlide" type="button" value="Previous Slide">
+    <input id="nextSlide" type="button" value="Next Slide">
+    <!-- history state display area-->
+    <div id="stateInfo4"></div>
+    <h3>浏览器兼容情况</h3>
+    <p>['Firefox', 'Chrome', 'IE 10', 'Safari 6', 'IOS Safari 5.1', 'Andoroid 4.3+']</p>
+    <h3>API 介绍</h3><pre>history.pushState( data, title, [,url] )
 data: 用以表示页面状态的字符串或对象
 title: 浏览器为页面显示的标题栏字符串 (大多数浏览器不支持)
 url: (可选)添加到历史记录栈中的新URL
@@ -90,11 +88,10 @@ window.addEventListener('popstate', func, false);
  每种浏览器的限制条目数各不相同，不过清理的顺序都是按照先进先出（FIFO）方式进行的。
  
  Polyfill: https://github.com/browserstate/history.js</pre>
-  <script src="./js/main.js"></script>
-  <script id="__bs_script__">
-    document.write("<script async src='//HOST:3000/browser-sync/browser-sync-client.1.9.1.js'><\/script>".replace(/HOST/g, location.hostname).replace(/PORT/g, location.port));
-
-  </script>
-</body>
+    <script src="./js/main.js"></script>
+    <script id="__bs_script__">
+      document.write("<script async src='//HOST:3000/browser-sync/browser-sync-client.1.9.1.js'><\/script>".replace(/HOST/g, location.hostname).replace(/PORT/g, location.port));
+    </script>
+  </body>
 
 </html>
