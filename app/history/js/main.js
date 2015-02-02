@@ -7,6 +7,7 @@
 // 为jshint定义全局变量
 /* global Modernizr */
 
+
 ( function () {
   'use strict';
 
