@@ -312,7 +312,7 @@ gulp.task('new', function() {
 gulp.task('connect', function() {
   connect.server({
     // root: './',
-    port: 8888
+    port: 2015
   });
 });
 // 同步浏览器
