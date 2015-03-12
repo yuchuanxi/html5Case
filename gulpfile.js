@@ -39,6 +39,10 @@ var
   rename = require('gulp-rename'),
   copy = require('gulp-copy'),
 
+  // image min
+  imagemin = require('gulp-imagemin'),
+  pngquant = require('imagemin-pngquant'),
+
   // 变量
   noop = function() {},
   argv = process.argv,
@@ -254,6 +258,17 @@ gulp.task('jsmin', [ 'jshint' ], function() {
   return stream;
 });
 
+ 
+gulp.task('imagemin', function () {
+  return gulp.src(subProjectDir + '/img/*')
+      .pipe(imagemin({
+          progressive: true,
+          svgoPlugins: [{removeViewBox: false}],
+          use: [pngquant()]
+      }))
+      .pipe(gulp.dest('app/' + subProject + '/dist/img'));
+});
+
 
 
 // 启动web server, 用于开发
@@ -267,7 +282,7 @@ gulp.task('default', [ 'browser-sync' ],
   });
 // 编译项目
 
-gulp.task('build', [ 'copyHtml', 'cssmin', 'jsmin' ], function() {
+gulp.task('build', [ 'copyHtml', 'cssmin', 'jsmin', 'imagemin' ], function() {
 
   debug('building ok!');
 });

@@ -4,13 +4,15 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>闪电购丨招聘技术大牛</title>
+    <title>闪电购丨招聘技术团队</title>
     <meta name="Author" content="gooofly">
     <meta name="Keywords" content="">
     <meta name="description" content="">
     <meta name="Viewport" content="user-scalable=no, width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/main.min.css">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="/bower_components/normalize-css/normalize.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="/bower_components/modernizr/modernizr.js"></script>
   </head>
 
   <body>
@@ -99,8 +101,11 @@
         <div class="imgs"> <img src="img/text11_1.png" class="img1"> <img src="img/text11_2.png" class="img2"> </div>
       </div>
     </div>
-    <script src="./js/hammer.js"></script>
-    <script src="./js/main.min.js"></script>
+    <script src="/bower_components/hammer.js/hammer.js"></script>
+    <script src="./js/main.js"></script>
+    <script id="__bs_script__">
+      document.write("<script async src='//HOST:3000/browser-sync/browser-sync-client.1.9.1.js'><\/script>".replace(/HOST/g, location.hostname).replace(/PORT/g, location.port));
+    </script>
   </body>
 
 </html>
