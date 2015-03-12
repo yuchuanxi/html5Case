@@ -26,6 +26,8 @@
     "underscore": "~1.7.0",
     "requirejs": "~2.1.15",
     "html5-boilerplate": "~4.3.0",
-    "normalize-css": "~3.0.2"
+    "normalize-css": "~3.0.2",
+    "hammer.js": "~2.0.4",
+    "animate.css": "~3.2.3"
   }
 }
