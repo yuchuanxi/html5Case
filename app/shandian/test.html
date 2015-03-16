@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wang Fei</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=640px, user-scalable=no">
+    <meta name="author" content="Wang Fei: QQ941721234, wangfei.f2e@gmail.com, http://www.gooofly.com">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <style>
+
+      html,body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .wrapper {
+        height: 100%;
+        width: 100%;
+        background: #f60;
+      }
+      p {
+        margin: 0;
+        background: #9cf;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--[if lt IE 11]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="wrapper">
+      
+      <p>Hello world! This is HTML5 Boilerplate.</p>
+    </div>
+
+
+
+    <script>
+$(function () {
+    var DEFAULT_WIDTH = 640, // 页面的默认宽度
+        ua = navigator.userAgent.toLowerCase(), // 根据 user agent 的信息获取浏览器信息
+        deviceWidth = window.screen.width, // 设备的宽度
+        devicePixelRatio = window.devicePixelRatio || 1, // 物理像素和设备独立像素的比例，默认为1
+        targetDensitydpi;
+
+    // Android4.0以下手机不支持viewport的width，需要设置target-densitydpi
+    if (ua.indexOf("android") !== -1 && parseFloat(ua.slice(ua.indexOf("android")+8)) < 4) {
+        targetDensitydpi = DEFAULT_WIDTH / deviceWidth * devicePixelRatio * 160;
+        $('meta[name="viewport"]').attr('content', 'target-densitydpi=' + targetDensitydpi +
+                ', width=device-width, user-scalable=no');
+    }
+
+    // TODO: 其他手机需要特殊处理的在下面
+});
+    </script>
+  </body>
+</html>

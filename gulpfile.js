@@ -7,6 +7,10 @@
  * title
  * --------------------------------------------
  */
+// 为jshint定义全局变量
+/* jshint es3: true */
+/* global require, process */
+
 'use strict';
 
 var
@@ -330,26 +334,38 @@ gulp.task('connect', function() {
     port: 2015
   });
 });
-// 同步浏览器
-gulp.task('browser-sync', [ 'connect', 'jade', 'css', 'jshint' ], function() {
-  browserSync({
-    proxy: {
-      host: 'http://localhost',
-      port: 5000
-    },
-    ghostMode: {
-      clicks: true,
-      location: true,
-      forms: true,
-      scroll: true
-    },
-    logLevel: 'info', // 'info', 'debug', 'warn', 'silent',
-    logPrefix: 'gf:',
-    browser: 'google chrome'
-  }, function(err) {
-    if (!err) {
-      debug('BrowserSync is ready!');
-    }
-  });
-});
 
+gulp.task('browser-sync',[ 'jade', 'css', 'jshint' ], function() {
+  browserSync({
+    ui: {
+      port: 8081, // default 8080
+      weinre: {
+        port: 9090 // default 9090
+      }
+    },
+    port: 2015,
+    // multiple globs
+    files: [ 'app/img/**', 'app/image/**' ],
+    server: {
+        baseDir: './app/',
+        routes: {
+          // Since version 1.2.1
+          // The key is the url to match
+          // The value is which folder to serve (relative to your current working directory)
+          '/bower_components': './bower_components'
+        }
+    },
+    logLevel: 'debug',
+    logPrefix: 'gooofly',
+    // Attempt to use the URL "http://my-private-site.localtunnel.me"
+    tunnel: 'gooofly',
+    // open: 'tunnel',
+    browser: 'google chrome',
+    // minify the client-side JS
+    minify: true
+    }, function(err) {
+      if ( !err ) {
+        // debug('BrowserSync is ready!');
+      }
+    });
+});
